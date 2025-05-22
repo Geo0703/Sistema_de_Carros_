@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.6">
+  <diagram name="Página-1" id="HavjtAux2vK7HV9pU6zq">
+    <mxGraphModel dx="1489" dy="840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-1" value="&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="152" width="419" height="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-3" value="Visualizar Agenda de Viagens" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="144" y="177" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-4" value="Confirmar Início da Viagem" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="147" y="305" width="254" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-5" value="Registrar Quilometragem Inicial" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="107" y="431" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-6" value="Registrar Ocorrências Durante Viagem" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="107" y="559" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-7" value="Finalizar Viagem" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="122" y="722" width="179" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-8" value="Registrar Quilometragem Final" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="55" y="860" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-9" value="Atualizar Status da Viagem" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="59" y="988" width="252" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-10" value="Notificar Conclusão da Viagem" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="55" y="1092" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-11" value="Marcar Veículo&#xa;como Em Uso" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="474" y="431" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-12" value="Marcar Veículo&#xa;como Disponível" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="474" y="860" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-13" value="Registrar Problemas&#xa;com o Veículo" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="496" y="710" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-14" value="Registrar Atraso" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="828" y="722" width="173" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-15" value="Notificar Gestor&#xa;sobre Atraso" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="784" y="860" width="260" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-16" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" target="tH2ZlUxF126Yadc5NjZD-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="274" y="102.00000000000023" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-17" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-3" target="tH2ZlUxF126Yadc5NjZD-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-18" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.44;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-4" target="tH2ZlUxF126Yadc5NjZD-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="237" y="395" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-19" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-5" target="tH2ZlUxF126Yadc5NjZD-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-20" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.45;exitY=1;entryX=0.5;entryY=-0.01;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-6" target="tH2ZlUxF126Yadc5NjZD-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="211" y="673" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-21" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.44;exitY=0.99;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-7" target="tH2ZlUxF126Yadc5NjZD-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="185" y="824" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-22" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-8" target="tH2ZlUxF126Yadc5NjZD-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-23" value="" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-9" target="tH2ZlUxF126Yadc5NjZD-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-24" value="&lt;&lt;include&gt;&gt;" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.6;exitY=1;entryX=0;entryY=0.05;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-4" target="tH2ZlUxF126Yadc5NjZD-11">
+          <mxGeometry x="-0.0019" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="331" y="395" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-25" value="&lt;&lt;include&gt;&gt;" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.63;exitY=0.99;entryX=0;entryY=0.12;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-7" target="tH2ZlUxF126Yadc5NjZD-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="279" y="824" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-26" value="&lt;&lt;extend&gt;&gt;" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.55;exitY=1;entryX=0;entryY=0.15;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-6" target="tH2ZlUxF126Yadc5NjZD-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="263" y="673" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-27" value="&lt;&lt;extend&gt;&gt;" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.72;exitY=1;entryX=0;entryY=0.28;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-6" target="tH2ZlUxF126Yadc5NjZD-14">
+          <mxGeometry x="0.0098" y="11" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="347" y="673" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-28" value="&lt;&lt;include&gt;&gt;" style="curved=1;dashed=1;dashPattern=2 3;startArrow=none;endArrow=block;exitX=0.5;exitY=0.99;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="tH2ZlUxF126Yadc5NjZD-14" target="tH2ZlUxF126Yadc5NjZD-15">
+          <mxGeometry x="0.0477" relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tH2ZlUxF126Yadc5NjZD-29" value="&lt;span style=&quot;text-wrap-mode: wrap;&quot;&gt;Motorista&lt;/span&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="20" width="30" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
