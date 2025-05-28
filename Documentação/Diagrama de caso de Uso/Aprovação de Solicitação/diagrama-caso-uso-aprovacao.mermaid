@@ -1,0 +1,30 @@
+graph TD
+    actor2(("Gestor"))
+    
+    subgraph "Sistema de Agendamento de Viagens"
+    A[Acessar Interface do Gestor]
+    B[Visualizar Solicitações Pendentes]
+    C[Analisar Detalhes da Solicitação]
+    D[Aprovar/Rejeitar Solicitação]
+    E[Atribuir Motorista e Veículo]
+    F[Enviar Notificação ao Solicitante]
+    G[Atualizar Calendário de Viagens]
+    end
+    
+    actor2 --> A
+    A --> B
+    B --> C
+    C --> D
+    D -->|Aprovada| E
+    D -->|Rejeitada| F
+    E --> F
+    E --> G
+    
+    %% Includes e extends
+    D -.->|<<include>>| H[Registrar Decisão\nno Sistema]
+    E -.->|<<include>>| I[Verificar Disponibilidade\nde Recursos]
+    F -.->|<<include>>| J[Atualizar Status\nda Solicitação]
+    
+    %% Fluxo alternativo
+    I -.->|<<extend>>| K[Exibir Alerta de\nRecursos Indisponíveis]
+    K -.-> E

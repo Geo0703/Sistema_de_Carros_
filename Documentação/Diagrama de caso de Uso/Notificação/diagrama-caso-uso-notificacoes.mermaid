@@ -1,0 +1,42 @@
+graph TD
+    actor1(("Solicitante"))
+    actor2(("Gestor"))
+    actor3(("Motorista"))
+    actor4(("Sistema"))
+    
+    subgraph "Sistema de Notificações"
+    A[Enviar Notificação por Email]
+    B[Receber Notificação de Nova Solicitação]
+    C[Receber Notificação de Aprovação/Rejeição]
+    D[Receber Notificação de Viagem Agendada]
+    E[Receber Alerta de Viagem Próxima]
+    F[Receber Notificação de Conclusão]
+    G[Gerenciar Preferências de Notificação]
+    end
+    
+    actor4 --> A
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+    A --> F
+    
+    actor1 --> G
+    actor1 --> C
+    actor1 --> F
+    
+    actor2 --> G
+    actor2 --> B
+    actor2 --> F
+    
+    actor3 --> G
+    actor3 --> D
+    actor3 --> E
+    
+    %% Includes e extends
+    A -.->|<<include>>| H[Formatar Conteúdo\nda Mensagem]
+    A -.->|<<include>>| I[Registrar Envio\nde Notificação]
+    G -.->|<<include>>| J[Atualizar Configurações\nde Usuário]
+    
+    %% Fluxo alternativo
+    A -.->|<<extend>>| K[Reenviar Notificação\nem Caso de Falha]

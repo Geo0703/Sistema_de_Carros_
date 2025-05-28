@@ -1,0 +1,80 @@
+sequenceDiagram
+    participant ControleSolicitacao as Controlador de Solicitação
+    participant ControleAprovacao as Controlador de Aprovação
+    participant ControleViagem as Controlador de Viagem
+    participant SistemaNotificacao as Sistema de Notificação
+    participant ServicoEmail as Serviço de Email
+    participant BDNotificacoes as Banco de Dados de Notificações
+    participant RepositorioUsuarios as Repositório de Usuários
+    actor Usuario
+    
+    Note over ControleSolicitacao,Usuario: Cenário 1: Notificação de Nova Solicitação
+    
+    ControleSolicitacao->>SistemaNotificacao: 1. notificarGestor(novaSolicitacao)
+    SistemaNotificacao->>RepositorioUsuarios: 2. buscarGestores()
+    RepositorioUsuarios-->>SistemaNotificacao: 3. listaGestores
+    
+    loop Para cada gestor
+        SistemaNotificacao->>ServicoEmail: 4. enviarEmail(emailGestor, "Nova Solicitação", detalhes)
+        ServicoEmail-->>SistemaNotificacao: 5. emailEnviado
+        
+        SistemaNotificacao->>BDNotificacoes: 6. registrarNotificacao(idGestor, "Nova Solicitação", detalhes)
+        BDNotificacoes-->>SistemaNotificacao: 7. notificacaoRegistrada
+    end
+    
+    SistemaNotificacao-->>ControleSolicitacao: 8. notificacoesEnviadas
+    
+    Note over ControleAprovacao,Usuario: Cenário 2: Notificação de Aprovação/Rejeição
+    
+    ControleAprovacao->>SistemaNotificacao: 1. notificarAprovacao(idSolicitacao, idMotorista)
+    SistemaNotificacao->>RepositorioUsuarios: 2. buscarSolicitante(idSolicitacao)
+    RepositorioUsuarios-->>SistemaNotificacao: 3. dadosSolicitante
+    
+    SistemaNotificacao->>RepositorioUsuarios: 4. buscarMotorista(idMotorista)
+    RepositorioUsuarios-->>SistemaNotificacao: 5. dadosMotorista
+    
+    SistemaNotificacao->>ServicoEmail: 6. enviarEmail(emailSolicitante, "Solicitação Aprovada", detalhes)
+    ServicoEmail-->>SistemaNotificacao: 7. emailEnviado
+    
+    SistemaNotificacao->>ServicoEmail: 8. enviarEmail(emailMotorista, "Nova Viagem Atribuída", detalhes)
+    ServicoEmail-->>SistemaNotificacao: 9. emailEnviado
+    
+    SistemaNotificacao->>BDNotificacoes: 10. registrarNotificacao(idSolicitante, "Solicitação Aprovada", detalhes)
+    BDNotificacoes-->>SistemaNotificacao: 11. notificacaoRegistrada
+    
+    SistemaNotificacao->>BDNotificacoes: 12. registrarNotificacao(idMotorista, "Nova Viagem Atribuída", detalhes)
+    BDNotificacoes-->>SistemaNotificacao: 13. notificacaoRegistrada
+    
+    SistemaNotificacao-->>ControleAprovacao: 14. notificacoesEnviadas
+    
+    Note over ControleViagem,Usuario: Cenário 3: Notificação de Conclusão de Viagem
+    
+    ControleViagem->>SistemaNotificacao: 1. notificarConclusaoViagem(idViagem)
+    SistemaNotificacao->>RepositorioUsuarios: 2. buscarEnvolvidosViagem(idViagem)
+    RepositorioUsuarios-->>SistemaNotificacao: 3. dadosEnvolvidos (solicitante, gestor)
+    
+    SistemaNotificacao->>ServicoEmail: 4. enviarEmail(emailSolicitante, "Viagem Concluída", detalhes)
+    ServicoEmail-->>SistemaNotificacao: 5. emailEnviado
+    
+    SistemaNotificacao->>ServicoEmail: 6. enviarEmail(emailGestor, "Viagem Concluída", detalhes)
+    ServicoEmail-->>SistemaNotificacao: 7. emailEnviado
+    
+    SistemaNotificacao->>BDNotificacoes: 8. registrarNotificacao(idSolicitante, "Viagem Concluída", detalhes)
+    BDNotificacoes-->>SistemaNotificacao: 9. notificacaoRegistrada
+    
+    SistemaNotificacao->>BDNotificacoes: 10. registrarNotificacao(idGestor, "Viagem Concluída", detalhes)
+    BDNotificacoes-->>SistemaNotificacao: 11. notificacaoRegistrada
+    
+    SistemaNotificacao-->>ControleViagem: 12. notificacoesEnviadas
+    
+    Note over SistemaNotificacao,Usuario: Cenário 4: Usuário visualiza notificações
+    
+    Usuario->>SistemaNotificacao: 1. acessarNotificacoes()
+    SistemaNotificacao->>BDNotificacoes: 2. buscarNotificacoesUsuario(idUsuario)
+    BDNotificacoes-->>SistemaNotificacao: 3. listaNotificacoes
+    SistemaNotificacao-->>Usuario: 4. Exibe notificações
+    
+    Usuario->>SistemaNotificacao: 5. marcarComoLida(idNotificacao)
+    SistemaNotificacao->>BDNotificacoes: 6. atualizarStatusNotificacao(idNotificacao, "LIDA")
+    BDNotificacoes-->>SistemaNotificacao: 7. statusAtualizado
+    SistemaNotificacao-->>Usuario: 8. Confirma leitura

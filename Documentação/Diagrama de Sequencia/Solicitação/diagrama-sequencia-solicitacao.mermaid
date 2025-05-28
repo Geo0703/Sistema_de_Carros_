@@ -1,0 +1,30 @@
+sequenceDiagram
+    actor Solicitante
+    participant FormularioUI as Interface de Formulário
+    participant ControleSolicitacao as Controlador de Solicitação
+    participant ValidadorHorario as Validador de Horário
+    participant SolicitacaoViagem as SolicitacaoViagem
+    participant SistemaNotificacao as Sistema de Notificação
+    
+    Solicitante->>FormularioUI: 1. Acessa formulário de solicitação
+    FormularioUI->>Solicitante: 2. Exibe formulário
+    
+    Solicitante->>FormularioUI: 3. Preenche dados da viagem (origem, destino, datas, horários, justificativa)
+    Solicitante->>FormularioUI: 4. Submete formulário
+    
+    FormularioUI->>ControleSolicitacao: 5. enviarSolicitacao(dadosViagem)
+    ControleSolicitacao->>ValidadorHorario: 6. validarHorarios(dataHoraPartida, dataHoraRetorno)
+    
+    alt Horários válidos
+        ValidadorHorario-->>ControleSolicitacao: 7. horáriosVálidos = true
+        ControleSolicitacao->>SolicitacaoViagem: 8. criar(dadosViagem)
+        SolicitacaoViagem-->>ControleSolicitacao: 9. solicitaçãoCriada
+        ControleSolicitacao->>SistemaNotificacao: 10. notificarGestor(novaSolicitacao)
+        SistemaNotificacao-->>ControleSolicitacao: 11. notificaçãoEnviada
+        ControleSolicitacao-->>FormularioUI: 12. solicitaçãoEnviadaComSucesso
+        FormularioUI-->>Solicitante: 13. Exibe mensagem de sucesso
+    else Horários inválidos
+        ValidadorHorario-->>ControleSolicitacao: 7. horáriosVálidos = false, motivo
+        ControleSolicitacao-->>FormularioUI: 8. erroValidação(motivo)
+        FormularioUI-->>Solicitante: 9. Exibe mensagem de erro com motivo
+    end

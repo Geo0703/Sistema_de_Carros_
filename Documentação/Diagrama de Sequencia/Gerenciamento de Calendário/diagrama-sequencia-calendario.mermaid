@@ -1,0 +1,78 @@
+sequenceDiagram
+    actor Usuario
+    participant CalendarioUI as Interface de Calendário
+    participant ControleCalendario as Controlador de Calendário
+    participant RepositorioViagens as Repositório de Viagens
+    participant GeradorEventos as Gerador de Eventos
+    participant ServicoSincronizacao as Serviço de Sincronização
+    participant RepositorioCalendario as Repositório de Calendários
+    
+    Note over Usuario,RepositorioCalendario: Cenário 1: Visualização do Calendário
+    
+    Usuario->>CalendarioUI: 1. Acessa visualização de calendário
+    CalendarioUI->>ControleCalendario: 2. carregarCalendario(mesAno, filtros)
+    ControleCalendario->>RepositorioViagens: 3. buscarViagens(mesAno, filtros)
+    RepositorioViagens-->>ControleCalendario: 4. listaViagens
+    
+    ControleCalendario->>GeradorEventos: 5. converterViagensParaEventos(listaViagens)
+    GeradorEventos-->>ControleCalendario: 6. listaEventos
+    
+    ControleCalendario-->>CalendarioUI: 7. dadosCalendario(listaEventos)
+    CalendarioUI-->>Usuario: 8. Exibe calendário com viagens
+    
+    Note over Usuario,RepositorioCalendario: Cenário 2: Filtragem do Calendário
+    
+    Usuario->>CalendarioUI: 1. Seleciona filtros (motorista, veículo, período)
+    CalendarioUI->>ControleCalendario: 2. aplicarFiltros(filtros)
+    ControleCalendario->>RepositorioViagens: 3. buscarViagensFiltradas(filtros)
+    RepositorioViagens-->>ControleCalendario: 4. listaViagensFiltradas
+    
+    ControleCalendario->>GeradorEventos: 5. converterViagensParaEventos(listaViagensFiltradas)
+    GeradorEventos-->>ControleCalendario: 6. listaEventosFiltrados
+    
+    ControleCalendario-->>CalendarioUI: 7. dadosCalendarioFiltrado(listaEventosFiltrados)
+    CalendarioUI-->>Usuario: 8. Exibe calendário filtrado
+    
+    Note over Usuario,RepositorioCalendario: Cenário 3: Sincronização com Calendário Externo
+    
+    Usuario->>CalendarioUI: 1. Solicita sincronização com calendário externo
+    CalendarioUI->>ControleCalendario: 2. iniciarSincronizacao(idUsuario, tipoCalendarioExterno)
+    
+    ControleCalendario->>ServicoSincronizacao: 3. autenticarServico(credenciaisUsuario)
+    ServicoSincronizacao-->>ControleCalendario: 4. tokenAutenticacao
+    
+    ControleCalendario->>RepositorioViagens: 5. buscarViagensUsuario(idUsuario)
+    RepositorioViagens-->>ControleCalendario: 6. listaViagensUsuario
+    
+    ControleCalendario->>GeradorEventos: 7. converterViagensParaEventosExternos(listaViagensUsuario, formatoExterno)
+    GeradorEventos-->>ControleCalendario: 8. listaEventosFormatados
+    
+    ControleCalendario->>ServicoSincronizacao: 9. enviarEventosParaCalendarioExterno(tokenAutenticacao, listaEventosFormatados)
+    
+    alt Sincronização bem-sucedida
+        ServicoSincronizacao-->>ControleCalendario: 10. sincronizacaoConcluida
+        ControleCalendario->>RepositorioCalendario: 11. registrarSincronizacao(idUsuario, tipoCalendarioExterno, dataHora)
+        RepositorioCalendario-->>ControleCalendario: 12. sincronizacaoRegistrada
+        ControleCalendario-->>CalendarioUI: 13. sincronizacaoBemSucedida
+        CalendarioUI-->>Usuario: 14. Exibe confirmação de sincronização
+    else Erro na sincronização
+        ServicoSincronizacao-->>ControleCalendario: 10. erroSincronizacao(mensagemErro)
+        ControleCalendario-->>CalendarioUI: 11. erroNaSincronizacao(mensagemErro)
+        CalendarioUI-->>Usuario: 12. Exibe mensagem de erro
+    end
+    
+    Note over Usuario,RepositorioCalendario: Cenário 4: Exportação do Calendário
+    
+    Usuario->>CalendarioUI: 1. Solicita exportação do calendário
+    CalendarioUI->>Usuario: 2. Solicita formato de exportação (PDF, iCal, CSV)
+    Usuario->>CalendarioUI: 3. Seleciona formato
+    
+    CalendarioUI->>ControleCalendario: 4. exportarCalendario(periodo, filtros, formato)
+    ControleCalendario->>RepositorioViagens: 5. buscarViagens(periodo, filtros)
+    RepositorioViagens-->>ControleCalendario: 6. listaViagens
+    
+    ControleCalendario->>GeradorEventos: 7. converterViagensParaFormatoExportacao(listaViagens, formato)
+    GeradorEventos-->>ControleCalendario: 8. dadosFormatados
+    
+    ControleCalendario-->>CalendarioUI: 9. arquivoExportacao
+    CalendarioUI-->>Usuario: 10. Disponibiliza arquivo para download
